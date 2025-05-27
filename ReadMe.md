@@ -7,7 +7,7 @@ Clir is a simple CLI tool that helps you efficiently scan and clean your Mac sys
 To install the latest version of `clir` directly to `/usr/local/bin`, run the following command in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YourGitHubUser/clir/main/install.sh | bash
+curl -fsSL https://clir.pashuk.info/install.sh | sh 
 ```
 ## Donate
 
