@@ -1,0 +1,516 @@
+@font-face {
+    font-family: 'Urbanist';
+    src: url('/Urbanist-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 100;
+    color: #000000;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 10px;
+    padding: 0;
+
+    span {
+        margin: 0;
+        padding: 0;
+        font-size: 30px;
+        font-weight: 800;
+        color: #000000;
+        cursor: pointer;
+        display: inline-block; /* Needed for transform to work */
+        transform-origin: bottom center;
+        transition: transform 0.3s ease-in-out; /* Smooth transition for non-hover state */
+
+        &:hover {
+            animation: swing 0.8s ease-in-out;
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+.problem-to-solve {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    & .problem-text {
+        font-size: 35px;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    & .submessage {
+        font-size: 25px;
+        font-weight: 400;
+        text-align: center;
+    }
+}
+
+.install {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    margin: 10px;
+
+    & .install-call-to-action {
+        font-size: 15px;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    & .install-link-container {
+        display: flex;
+        align-items: center;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        padding: 10px;
+        gap: 10px;
+
+        & .install-link {
+            font-size: 12px;
+            font-weight: 100;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button {
+            aspect-ratio: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+            background-color: transparent;
+
+            &:hover {
+                background-color: #e5e5e5;
+                transition: background-color 0.3s ease;
+            }
+
+            img {
+                width: 20px;
+                height: auto;
+                object-fit: contain;
+                margin: 0;
+                padding: 0;
+                background-color: transparent;
+            }
+        }
+
+
+    }
+
+    a {
+        text-decoration: none;
+        color: #000000;
+        font-size: 10px;
+        font-weight: 100;
+
+        &:hover {
+            text-decoration: underline;
+            transition: text-decoration 0.3s ease;
+        }
+    }
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    margin: 10px;
+}
+
+
+.install-link-container button.copied {
+    transition: background-color 0.3s ease;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+
+/* Tooltip styles */
+.install-link-container button {
+    position: relative;
+}
+
+.install-link-container button::before,
+.install-link-container button::after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.install-link-container button::before {
+    content: attr(data-tooltip);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    bottom: 150%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.install-link-container button::after {
+    content: '';
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    bottom: 115%; /* Position the arrow below the tooltip box */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.install-link-container button.copied-tooltip::before,
+.install-link-container button.copied-tooltip::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Terminal Tooltip Styles */
+.terminal-tooltip-trigger {
+    position: relative;
+    cursor: help; /* Indicate that it's interactive */
+}
+
+.terminal-tooltip-trigger::before {
+    content: '';
+    position: absolute;
+    top: -40px; /* Adjust as needed to position above the text */
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url('/images/terminal.webp'); /* Replace with your actual terminal icon path */
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px; /* Adjust size of the image */
+    height: 40px; /* Adjust size of the image */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100; /* Ensure it's above other content */
+}
+
+.terminal-tooltip-trigger:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Optional: Add a small arrow if desired */
+.terminal-tooltip-trigger::after {
+    content: '';
+    position: absolute;
+    top: -5px; /* Position below the image */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent; /* Match tooltip background */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+}
+
+.terminal-tooltip-trigger:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.screenshot-container {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Disk Usage Container */
+.disk-usage-container {
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    color: #ffffff;
+    position: relative; /* Add this line */
+}
+
+.disk-usage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px; /* Further reduced margin */
+    font-size: 0.7em; /* Even smaller header font size */
+    font-weight: 500;
+}
+
+.disk-name {
+    color: #ffffff;
+    font-size: 10px; /* Even smaller disk name font size */
+}
+
+.disk-total-usage {
+    color: #b0b0b0;
+    font-size: 10px;
+}
+
+.disk-usage-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 8px;
+    margin-top: 8px;
+    justify-content: flex-start;
+}
+
+.disk-usage-tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(32, 32, 32, 0.85);
+    color: #ffffff;
+    padding: 4px 7px;
+    border-radius: 3px;
+    font-size: 0.65em; 
+    text-align: center;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    border: 0.5px solid rgb(175, 171, 171);
+    transform: translate(-50%, -100%);
+}
+
+.disk-usage-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Further adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 3px 3px 0; /* Further adjusted size */
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+.disk-usage-bar {
+    display: flex;
+    width: 100%;
+    height: 12px;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+    background-color: #4a4a4a;
+}
+
+.bar-segment {
+    height: 100%;
+}
+
+.bar-segment.apps {
+    background-color: #d5d083;
+}
+
+.bar-segment.documents {
+    background-color: #7ac2e4;
+}
+
+.bar-segment.developer {
+    background-color: #ffcc00;
+}
+
+.bar-segment.macos {
+    background-color: #8e8e93;
+}
+
+.bar-segment.system-data {
+    background-color: #ff3b30;
+}
+
+.disk-usage-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px; /* Further adjusted gap between legend items */
+    margin-top: 10px; /* Further adjusted margin */
+    justify-content: flex-start;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+}
+
+.legend-label {
+    font-size: 10px;
+    font-weight: 400;
+    color: #b0b0b0;
+}
+
+.legend-color {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-right: 4px; 
+}
+
+.legend-color.apps {
+    background-color: #d5d083;
+}
+
+.legend-color.documents {
+    background-color: #7ac2e4;
+}
+
+.legend-color.developer {
+    background-color: #ffcc00;
+}
+
+.legend-color.macos {
+    background-color: #8e8e93;
+}
+
+.legend-color.system-data {
+    background-color: #ff3b30;
+}
+
+.disk-usage-tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 5px 8px; /* Further reduced padding */
+    border-radius: 4px; /* Further smaller border-radius */
+    font-size: 0.7em; /* Further smaller font size for tooltip */
+    text-align: center;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* Further adjusted shadow */
+    transform: translate(-50%, -100%);
+}
+
+.disk-usage-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Further adjusted position */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 4px 4px 0; /* Further adjusted size */
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(5deg); }
+    40% { transform: rotate(-5deg); }
+    60% { transform: rotate(3deg); }
+    80% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+.submessage {
+    display: inline-block;
+    animation: wiggle 1s infinite ease-in-out alternate;
+}
+
+.banner {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    margin-top: auto;
+
+    a {
+        color: #000000;
+        text-decoration: underline;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: none;
+            color: #000000;
+        }
+    }
+
+
+}
+
+
+
+   
+

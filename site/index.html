@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Clir - Mac cleaner!</title>
+        <link rel="preload" href="/Urbanist-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
+        <link rel="stylesheet" href="/style.css">
+        <link rel="icon" href="/favicon.webp" type="image/webp">
+        <script src="/script.js" defer></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2V749HXZF"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-C2V749HXZF');
+        </script>
+    </head>
+    <body>
+        <div class="root">
+            <header>
+                <span>Clir</span>
+            </header>
+            <main>
+                <div class="problem-to-solve">
+                    <span class="problem-text">
+                        System Data <br> garbages your disk?
+                    </span>
+
+                    <div class="screenshot-container">
+                        <div class="disk-usage-container">
+                            <div class="disk-usage-header">
+                                <span class="disk-name">Macintosh HD</span>
+                                <span class="disk-total-usage">232,85 of 245.11 GB used</span>
+                            </div>
+                            <div class="disk-usage-bar">
+                                <div class="bar-segment apps" style="width: 17%;"></div>
+                                <div class="bar-segment documents" style="width: 15%;"></div>
+                                <div class="bar-segment developer" style="width: 3%;"></div>
+                                <div class="bar-segment macos" style="width: 10%;"></div>
+                                <div class="bar-segment system-data" style="width: 50%;"></div>
+                            </div>
+                            <div class="disk-usage-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color apps"></span>
+                                    <span class="legend-label">Apps</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color documents"></span>
+                                    <span class="legend-label">Documents</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color developer"></span>
+                                    <span class="legend-label">Developer</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color macos"></span>
+                                    <span class="legend-label">macOS</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color system-data"></span>
+                                    <span class="legend-label">System Data</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="submessage">
+                        <b>Clir</b> clears that <u>for free</u>
+                    </span>
+                </div>
+
+                <div class="install">
+                    <span class="install-call-to-action">Install: <b>copy & paste</b> in your <u class="terminal-tooltip-trigger">terminal</u></span>
+                    <div class="install-link-container">
+                        <span class="install-link">
+                            curl -fsSL https://clir.pashuk.info/install.sh | sh         
+                        </span>
+                        <button type="button" onclick="copyToClipboard(document.querySelector('.install-link').innerText)" data-tooltip="Copied!">
+                            <span><img src="/icons/file-copy-line.svg" alt="copy"></span>
+                        </button>
+                    </div>
+                    <a href="https://github.com/pashukfree/clir/main/site/install.sh" class="check-source" target="_blank" rel="noopener noreferrer">
+                        View script source
+                    </a>
+                    <a href="https://github.com/pashukfree/clir" class="check-source" target="_blank" rel="noopener noreferrer">
+                        Check source code on <b>GitHub</b>
+                    </a>
+                </div>
+
+                <div class="start">
+                    
+                </div>
+            </main>
+            <div class="banner">
+                Stand with 🇺🇦 ukrainian defenders, donate to <a href="https://savelife.in.ua/en/donate-en/#donate-army-card-once" target="_blank" rel="noopener noreferrer">Come Back Alive Fund</a>
+            </div>
+        </div>
+    </body>
+</html>
